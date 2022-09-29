@@ -4,7 +4,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Hello world'
+                git 'https://github.com/Carambis/hello-world'
+                sh 'docker build -t hello-world-${env.BUILD_ID}'
             }
         }
     }
