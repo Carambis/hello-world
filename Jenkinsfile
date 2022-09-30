@@ -21,9 +21,9 @@ pipeline {
         }
         stage('Publish') {
             steps {
-               script {
-                   kubernetesDeploy(configs: "hello-world-service.yaml", kubeconfigId: "kubernetes")
-               }
+                withKubeConfig([credentialsId: 'test']) {
+                     sh 'kubectl get pods'
+                }
             }
         }
     }
