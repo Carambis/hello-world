@@ -19,7 +19,9 @@ pipeline {
         }
         stage('Publish') {
             steps {
-               sh "kubectl apply -f hello-world-service.yaml"
+               script {
+                   kubernetesDeploy(configs: "hello-world-service.yaml", kubeconfigId: "kubernetes")
+               }
             }
         }
     }
