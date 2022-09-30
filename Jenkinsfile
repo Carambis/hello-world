@@ -22,7 +22,7 @@ pipeline {
         stage('Publish') {
             steps {
                 withKubeConfig([credentialsId: 'test']) {
-                     sh 'kubectl get pods'
+                     sh "kubectl apply -f .\\hello-world-service.yaml"
                 }
             }
         }
