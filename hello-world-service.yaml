@@ -14,9 +14,9 @@ spec:
     spec:
       containers:
         - name: hello-world
-          image: hello-world:latest
+          image: carambis/hello-world:20
           ports:
-            - containerPort: 8080
+            - containerPort: 8081
               name: http
 ---
 apiVersion: v1
@@ -30,6 +30,6 @@ spec:
   ports:
     - name: http
       protocol: TCP
-      port: 8080
-      targetPort: 8080
+      port: 8081
+      targetPort: 8081
       nodePort: 30081
