@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: hello-world
-          image: carambis/hello-world:20
+          image: carambis/hello-world:22
           ports:
             - containerPort: 8081
               name: http

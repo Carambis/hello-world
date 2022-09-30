@@ -17,5 +17,10 @@ pipeline {
                 sh "docker push carambis/hello-world:${env.BUILD_ID}"
             }
         }
+        stage('Publish') {
+            steps {
+               sh "kubectl apply -f hello-world-service.yaml"
+            }
+        }
     }
 }
