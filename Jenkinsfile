@@ -7,14 +7,14 @@ pipeline {
         stage('Build') {
             steps {
                 git 'https://github.com/Carambis/hello-world'
-                sh "docker build -t hello-world-${env.BUILD_ID} ."
+                sh "docker build -t hello-world:${env.BUILD_ID} ."
             }
         }
         stage('Push') {
             steps {
                 sh "docker login --username=$HUB_CREDS_USR --password=$HUB_CREDS_PSW"
-                sh "docker tag hello-world-${env.BUILD_ID} carambis/hello-world-${env.BUILD_ID}:firsttry"
-                sh "docker push carambis/hello-world-${env.BUILD_ID}:firsttry"
+                sh "docker tag hello-world-${env.BUILD_ID} carambis/hello-world:${env.BUILD_ID}"
+                sh "docker push carambis/hello-world:${env.BUILD_ID}"
             }
         }
     }
