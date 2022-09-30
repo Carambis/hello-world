@@ -14,7 +14,9 @@ pipeline {
             steps {
                 sh "docker login --username=$HUB_CREDS_USR --password=$HUB_CREDS_PSW"
                 sh "docker tag hello-world:${env.BUILD_ID} carambis/hello-world:${env.BUILD_ID}"
+                sh "docker tag hello-world:${env.BUILD_ID} carambis/hello-world:latest"
                 sh "docker push carambis/hello-world:${env.BUILD_ID}"
+                sh "docker push carambis/hello-world:latest"
             }
         }
         stage('Publish') {
